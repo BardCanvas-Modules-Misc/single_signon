@@ -52,7 +52,7 @@
     </messages>
     
     <settings_data>
-        <title>Comentarios de Facebook</title>
+        <title>Inicio de sesión único</title>
         
         <specs key="facebook_app_id">
             <title><![CDATA[
@@ -70,7 +70,7 @@
             <type>number</type>
         </specs>
         
-        <specs key="facebook_app_id">
+        <specs key="facebook_app_secret">
             <title><![CDATA[
                 Llave secreta de aplicación en
                 <span class="framed_content inlined">Facebook</span>
@@ -83,7 +83,7 @@
                 debes asegurarte de que estás usando la misma llave o el
                 kit de servicios de Facebook fallará.
             ]]></description>
-            <type>number</type>
+            <type>text</type>
         </specs>
         
     </settings_data>
