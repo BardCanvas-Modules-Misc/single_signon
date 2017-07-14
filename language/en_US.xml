@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+    
+    <display_name>Single Sign On</display_name>
+    <icon>fa-key</icon>
+    <description>
+        Integrated Single Sign On with major Social Networks.
+        Extends the Accounts module to allow the connection of existing accounts with Social Networks.
+        Note: Facebook is the only one supported at the moment.
+    </description>
+    
+    <login_with_facebook>Login with Facebook</login_with_facebook>
+    
+    <facebook>
+        <invitation>Do you have a Facebook account?</invitation>
+        <connect>Connect with Facebook</connect>
+        <user_connected>This user has a Facebook account conected with a local account.</user_connected>
+        <already_connected>You have your Facebook account conected with your local account.</already_connected>
+        <cannot_connect_other>You cannot have a Facebook account connected to more than one user account on this website.</cannot_connect_other>
+        <not_connected>Do you have a Facebook account? You can connect it with your local account!</not_connected>
+        <go_to_my_facebook_page>Go to my Facebook page</go_to_my_facebook_page>
+        <go_to_user_facebook_page>Go to user's Facebook page</go_to_user_facebook_page>
+        <disconnect>Disconnect from Facebook</disconnect>
+        <disconnect_prompt><![CDATA[
+            Note: your Facebook account will be unlinked from your local
+            profile, but no notification will be sent to Facebook.
+             
+            Your local account wont be deleted. Your current session
+            will remain open until you logout.
+             
+            If you didn't set a password for your account, you will have to
+            request a reset from the login form and use your user name or
+            alias to login afterwards.
+             
+            Do you want to proceed?
+        ]]></disconnect_prompt>
+    </facebook>
+    
+    <edit_my_profile>Edit my local profile</edit_my_profile>
+    
+    <messages>
+        <session_token_not_found>Session token not found. Please reload the page and try again.</session_token_not_found>
+        <facebook>
+            <error_on_remote_call>Error on call to Facebook API: </error_on_remote_call>
+            <missing_app_id>Sorry, but Facebook App Id isn't set. Please ask an admin to enter it on the Settings.</missing_app_id>
+            <missing_app_secret>Sorry, but Facebook App Secret key isn't set. Please ask an admin to enter it on the Settings.</missing_app_secret>
+            <missing_account_id>Facebook account id not provided</missing_account_id>
+            <missing_account_name>Facebook account name not provided</missing_account_name>
+            <missing_account_email>Facebook account email not provided</missing_account_email>
+            <missing_access_token>Facebook access token for the account not provided</missing_access_token>
+            <account_not_linked>This local account is not linked to any Facebook account</account_not_linked>
+            <already_linked>Sorry, but your Facebook account is already linked to another account on this website. You should logout now and login with Facebook to get to the actual linked account.</already_linked>
+        </facebook>
+    </messages>
+    
+    <settings_data>
+        <title>Single Sign On</title>
+        
+        <specs key="facebook_app_id">
+            <title><![CDATA[
+                <span class="framed_content inlined">Facebook</span>
+                App Id
+            ]]></title>
+            <description><![CDATA[
+                Specify the Facebook App Id for your website.<br>
+                <i class="fa fa-info-circle"></i>
+                <b>Warning:</b> if you're using any other module for Facebook
+                (like the Facebook Comments module),
+                you must make sure that you're using the same App Id or the Facebook SDK
+                will fail.
+            ]]></description>
+            <type>number</type>
+        </specs>
+        
+        <specs key="facebook_app_secret">
+            <title><![CDATA[
+                <span class="framed_content inlined">Facebook</span>
+                App Secret
+            ]]></title>
+            <description><![CDATA[
+                Specify your Facebook App Secret key.<br>
+                <i class="fa fa-info-circle"></i>
+                <b>Warning:</b> if you're using any other module for Facebook
+                that also requires your App Secret,
+                you must make sure that you're using the same key or the Facebook SDK
+                will fail.
+            ]]></description>
+            <type>text</type>
+        </specs>
+        
+    </settings_data>
+    
+</language>

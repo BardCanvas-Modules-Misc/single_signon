@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+    
+    <display_name>Inicio de Sesión Único</display_name>
+    <icon>fa-key</icon>
+    <description>
+        Solución de inicio único con grandes redes sociales.
+        Extiende el módulo de usuarios para permitir el atado de redes sociales con cuentas existentes.
+        Nota: Sólo Facebook es soportado por el momento.
+    </description>
+    
+    <login_with_facebook>Abrir sesion con Facebook</login_with_facebook>
+    
+    <facebook>
+        <invitation>¿Tienes una cuenta en Facebook?</invitation>
+        <connect>Conectar con Facebook</connect>
+        <user_connected>Este usuario tiene una cuenta de Facebook conectada con una cuenta local.</user_connected>
+        <already_connected>Ya tienes una cuenta de Facebook conectada con tu cuenta local.</already_connected>
+        <cannot_connect_other>No puedes tener una cuenta de Facebook conectada con más de una cuenta de usuario en este sitio web.</cannot_connect_other>
+        <not_connected>¿Tienes una cuenta en Facebook? ¡Puedes conectarla con tu cuenta local!</not_connected>
+        <go_to_my_facebook_page>Ir a mi página en Facebook</go_to_my_facebook_page>
+        <go_to_user_facebook_page>Ir a la página del usuario en Facebook</go_to_user_facebook_page>
+        <disconnect>Desconectar de Facebook</disconnect>
+        <disconnect_prompt><![CDATA[
+            Nota: tu cuenta de Facebook será desconectada de tu perfil
+            local, pero no se notificará a Facebook al respecto.
+             
+            Tu cuenta local no será eliminada. Tu sesión actual
+            permanecerá abierta hasta que la cierres manualmente.
+             
+            Si no especificaste una contraseña para tu cuenta,
+            deberás reiniciarla desde la forma de acceso y usar tu
+            nombre de usuario o alias para abrir sesion posteriormente.
+             
+            ¿Deseas proceder?
+        ]]></disconnect_prompt>
+    </facebook>
+    
+    <messages>
+        <session_token_not_found>Token de sesion no encontrado. Por favor recarga la página e intenta de nuevo.</session_token_not_found>
+        <facebook>
+            <error_on_remote_call>Error al llamar a la API de Facebook: </error_on_remote_call>
+            <missing_app_id>Disculpa, pero la id de aplicación de Facebook no ha sido configurada. Por favor informa a algún administrador del sitio para que la establezca en la configuración.</missing_app_id>
+            <missing_app_secret>Disculpa, pero la llave secreta de aplicación de Facebook no ha sido configurada. Por favor informa a algún administrador del sitio para que la establezca en la configuración.</missing_app_secret>
+            <missing_account_id>Identificador de cuenta de usuario de Facebook no especificado</missing_account_id>
+            <missing_account_name>Nombre real del usuario de Facebook no especificado</missing_account_name>
+            <missing_account_email>Email del usuario de Facebook no especificado</missing_account_email>
+            <missing_access_token>Token de acceso a la cuenta del usuario de Facebook no especificado</missing_access_token>
+            <account_not_linked>Esta cuenta no está localmente conectada a ninguna cuenta de Facebook</account_not_linked>
+            <already_linked>Lo sentimpos, pero tu cuenta de Facebook ya está conectada a otra cuenta en este sitio web. Deberías cerrar sesión y reabrirla con Facebook para ir a la cuenta actualmente conectada.</already_linked>
+        </facebook>
+    </messages>
+    
+    <settings_data>
+        <title>Comentarios de Facebook</title>
+        
+        <specs key="facebook_app_id">
+            <title><![CDATA[
+                Id de aplicación en
+                <span class="framed_content inlined">Facebook</span>
+            ]]></title>
+            <description><![CDATA[
+                Especifica la id de aplicación de Facebook para tu sitio web.<br>
+                <i class="fa fa-info-circle"></i>
+                <b>Advertencia:</b> si estás usando algún otro módulo para Facebook
+                (como lo es el módulo de Comentarios de Facebook),
+                debes asegurarte de que estás usando la misma id de aplicación o el
+                kit de servicios de Facebook fallará.
+            ]]></description>
+            <type>number</type>
+        </specs>
+        
+        <specs key="facebook_app_id">
+            <title><![CDATA[
+                Llave secreta de aplicación en
+                <span class="framed_content inlined">Facebook</span>
+            ]]></title>
+            <description><![CDATA[
+                Especifica la llave secreta de aplicación de Facebook para tu sitio web.<br>
+                <i class="fa fa-info-circle"></i>
+                <b>Advertencia:</b> si estás usando algún otro módulo para Facebook
+                que también requiera tu llave secreta,
+                debes asegurarte de que estás usando la misma llave o el
+                kit de servicios de Facebook fallará.
+            ]]></description>
+            <type>number</type>
+        </specs>
+        
+    </settings_data>
+    
+</language>
