@@ -98,6 +98,10 @@ if( $_POST["method"] == "login" )
             if( ! $account->_exists ) $account = null;
         }
         
+        # Last check before creation
+        if( is_null($account) && $settings->get("modules:accounts.register_enabled") != "true" )
+            die($current_module->language->messages->user_registration_disabled);
+        
         # Create
         if( is_null($account) )
         {

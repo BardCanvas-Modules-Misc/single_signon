@@ -49,6 +49,7 @@
             <account_not_linked>Esta cuenta no está localmente conectada a ninguna cuenta de Facebook</account_not_linked>
             <already_linked>Lo sentimpos, pero tu cuenta de Facebook ya está conectada a otra cuenta en este sitio web. Deberías cerrar sesión y reabrirla con Facebook para ir a la cuenta actualmente conectada.</already_linked>
         </facebook>
+        <user_registration_disabled>Lo sentimos, pero el registro de cuentas está deshabilitado.</user_registration_disabled>
     </messages>
     
     <settings_data>

@@ -51,6 +51,7 @@
             <account_not_linked>This local account is not linked to any Facebook account</account_not_linked>
             <already_linked>Sorry, but your Facebook account is already linked to another account on this website. You should logout now and login with Facebook to get to the actual linked account.</already_linked>
         </facebook>
+        <user_registration_disabled>Sorry, but the accounts registration service is disabled.</user_registration_disabled>
     </messages>
     
     <settings_data>
