@@ -93,7 +93,7 @@ if( $_POST["method"] == "login" )
         # Lookup by mangled numeric id to avoid dupes
         if( is_null($account) )
         {
-            $id = "99" . $_POST["id"];
+            $id = "20" . $_POST["id"];
             $account = new account($id);
             if( ! $account->_exists ) $account = null;
         }
