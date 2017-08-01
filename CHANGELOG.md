@@ -1,7 +1,11 @@
 
 # Single Sign ON Module Change Log
 
-## [0.0.4] -2017-07-26
+## [0.0.5] - 2017-07-31
+
+- Added email permission request to Facebook login.
+
+## [0.0.4] - 2017-07-26
 
 - Added check to avoid automatic accounts creation through Facebook when accounts registration is disabled.
 - Changed UID mangling prefix to avoid BIGINT overflows
