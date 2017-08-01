@@ -57,5 +57,5 @@ $config->globals["facebook_app_secret"] = $app_secret;
 
 <!-- Single Sign On functions -->
 
-<script type="text/javascript" src="<?= $config->full_root_path ?>/single_signon/media/facebook_functions~v1.0.0-7.js"></script>
+<script type="text/javascript" src="<?= $config->full_root_path ?>/single_signon/media/facebook_functions~v1.0.1-2.js"></script>
 
