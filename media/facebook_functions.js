@@ -56,7 +56,7 @@ function facebook_login_do($form)
                 });
             });
         });
-    });
+    }, {scope: 'email'});
 }
 
 function facebook_disconnect($form)
