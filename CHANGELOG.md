@@ -1,6 +1,10 @@
 
 # Single Sign ON Module Change Log
 
+## [0.1.0] - 2018-09-28
+
+- Added redirection after login support.
+
 ## [0.0.5] - 2017-07-31
 
 - Added email permission request to Facebook login.
