@@ -28,6 +28,6 @@ $config->globals["facebook_app_secret"] = $app_secret;
 
 <div class="aligncenter" style="margin: 10px 0">
     <div class="framed_content pseudo_link" style="color: white; background-color: #3B5998; border: none;"
-          onclick="facebook_login_do( $(this).closest('form') )"><i class="fa fa-facebook-square"></i>
+          onclick="facebook_login_do( $(this).closest('form'), '<?= $_GET["redir_url"] ?>' )"><i class="fa fa-facebook-square"></i>
           <?= $this_module->language->login_with_facebook ?></div>
 </div>

@@ -29,7 +29,7 @@ if( $template->layout == "admin" ) return;
         </p>
         <p>
             <span class="framed_content pseudo_link" style="color: white; background-color: #3B5998; border: none;"
-                 onclick="facebook_login_do( $(this).closest('form') )"><i class="fa fa-facebook-square"></i>
+                 onclick="facebook_login_do( $(this).closest('form'), '<?= $_GET["redir_url"] ?>' )"><i class="fa fa-facebook-square"></i>
                 <?= $this_module->language->facebook->connect ?></span>
         </p>
         

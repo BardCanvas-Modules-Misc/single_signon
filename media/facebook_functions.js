@@ -2,9 +2,12 @@
  * Executes a Facebook login
  *
  * @param {jQuery} $form
+ * @param {string} redir_url
  */
-function facebook_login_do($form)
+function facebook_login_do($form, redir_url)
 {
+    if( typeof redir_url === 'undefined' ) redir_url = '';
+    
     $form.block(blockUI_medium_params);
     FB.login(function()
     {
@@ -49,7 +52,9 @@ function facebook_login_do($form)
                         return;
                     }
                     
-                    if( location.href.indexOf('/accounts/register.php') >= 0 )
+                    if( redir_url != '' )
+                        location.href = redir_url;
+                    else if( location.href.indexOf('/accounts/register.php') >= 0 )
                         location.href = $_FULL_ROOT_PATH + '/?loggedin=true';
                     else
                         location.reload();
