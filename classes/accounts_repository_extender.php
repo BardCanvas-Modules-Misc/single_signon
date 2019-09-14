@@ -42,6 +42,7 @@ class accounts_repository_extender extends accounts_repository
     {
         $suffix    = "";
         $user_name = wp_sanitize_filename($user_display_name);
+        if( strlen($user_name) <= 8 ) $user_name = "fbu" . mt_rand(10000, 99999);
         while( true )
         {
             $rows = $this->get_record_count(array("user_name" => $user_name.$suffix));
