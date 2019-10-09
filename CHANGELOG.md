@@ -1,6 +1,11 @@
 
 # Single Sign ON Module Change Log
 
+## [0.1.1] - 2019-10-08
+
+- Added check to avoid malformed user names.
+- Added check to avoid errors on account relinks.
+
 ## [0.1.0] - 2018-09-28
 
 - Added redirection after login support.
