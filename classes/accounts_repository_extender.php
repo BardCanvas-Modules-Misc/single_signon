@@ -62,7 +62,16 @@ class accounts_repository_extender extends accounts_repository
         $account->country      = empty($country) ? "US" : $country;
         $account->level        = config::NEWCOMER_USER_LEVEL;
         $account->state        = "enabled";
-        $account->save();
+        
+        try
+        {
+            $account->save();
+        }
+        catch(\Exception $e)
+        {
+            # Note: here, the account already exists but isn't linked. We'll just relink it.
+            $account = new account("99" . $remote_id_account);
+        }
         
         $account->set_engine_pref("$social_network_key:id", $remote_id_account);
         
