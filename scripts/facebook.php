@@ -84,7 +84,7 @@ if( $_POST["method"] == "login" )
             die($current_module->language->messages->facebook->already_linked);
         
         $account->set_engine_pref("facebook:id", $_POST["id"]);
-        $register_device = false;
+        $register_device = true;
     }
     else
     {
