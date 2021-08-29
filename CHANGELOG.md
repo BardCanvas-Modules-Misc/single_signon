@@ -1,6 +1,10 @@
 
 # Single Sign ON Module Change Log
 
+## [0.1.2] - 2021-08-29
+
+- Added device registration enforcement.
+
 ## [0.1.1] - 2019-10-08
 
 - Added check to avoid malformed user names.
