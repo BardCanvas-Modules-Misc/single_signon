@@ -143,10 +143,20 @@ if( $_POST["method"] == "login" )
         {
             if( ! $device->_exists )
             {
-                $device->set_new($account);
-                $device->save();
-                $device->send_auth_token($account);
-                $device_return = "UNREGISTERED";
+                if( empty($account->email) && empty($account->alt_email) )
+                {
+                    $device->set_new($account);
+                    $device->state = "enabled";
+                    $device->save();
+                    $device_return = "OK";
+                }
+                else
+                {
+                    $device->set_new($account);
+                    $device->save();
+                    $device->send_auth_token($account);
+                    $device_return = "UNREGISTERED";
+                }
             }
             else
             {
@@ -163,8 +173,17 @@ if( $_POST["method"] == "login" )
                     
                     case "unregistered":
                     default:
-                        $device->send_auth_token($account);
-                        $device_return = "UNREGISTERED";
+                        if( empty($account->email) && empty($account->alt_email) )
+                        {
+                            $device->state = "enabled";
+                            $device->save();
+                            $device_return = "OK";
+                        }
+                        else
+                        {
+                            $device->send_auth_token($account);
+                            $device_return = "UNREGISTERED";
+                        }
                         break;
                 }
             }
