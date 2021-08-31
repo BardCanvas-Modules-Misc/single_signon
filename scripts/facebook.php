@@ -119,8 +119,8 @@ if( $_POST["method"] == "login" )
         if( ! $device->_exists )
         {
             $device->set_new($account);
-            $device->state = "enabled";
             $device->save();
+            $device->enable();
             $device_return = "OK";
         }
         else
@@ -135,28 +135,18 @@ if( $_POST["method"] == "login" )
         {
             # Even though device registration is enforced, we'll allow it the first time.
             $device->set_new($account);
-            $device->state = "enabled";
             $device->save();
+            $device->enable();
             $device_return = "OK";
         }
         else
         {
             if( ! $device->_exists )
             {
-                if( empty($account->email) && empty($account->alt_email) )
-                {
-                    $device->set_new($account);
-                    $device->state = "enabled";
-                    $device->save();
-                    $device_return = "OK";
-                }
-                else
-                {
-                    $device->set_new($account);
-                    $device->save();
-                    $device->send_auth_token($account);
-                    $device_return = "UNREGISTERED";
-                }
+                $device->set_new($account);
+                $device->save();
+                $device->enable();
+                $device_return = "OK";
             }
             else
             {
@@ -173,18 +163,10 @@ if( $_POST["method"] == "login" )
                     
                     case "unregistered":
                     default:
-                        if( empty($account->email) && empty($account->alt_email) )
-                        {
-                            $device->state = "enabled";
-                            $device->save();
-                            $device_return = "OK";
-                        }
-                        else
-                        {
-                            $device->send_auth_token($account);
-                            $device_return = "UNREGISTERED";
-                        }
-                        break;
+                        $device->set_new($account);
+                        $device->save();
+                        $device->enable();
+                        $device_return = "OK";
                 }
             }
         }
