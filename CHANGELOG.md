@@ -1,6 +1,10 @@
 
 # Single Sign ON Module Change Log
 
+## [0.1.4] - 2021-08-31
+
+- Reshaped previous changes.
+
 ## [0.1.3] - 2021-08-30
 
 - Added a fallback for accounts that don't have an email when device registration is enforced.
