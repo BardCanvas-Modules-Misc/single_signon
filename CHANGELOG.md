@@ -1,6 +1,10 @@
 
 # Single Sign ON Module Change Log
 
+## [0.1.5] - 2021-12-13
+
+- Added check for existing accounts to avoid database error.
+
 ## [0.1.4] - 2021-08-31
 
 - Reshaped previous changes.
