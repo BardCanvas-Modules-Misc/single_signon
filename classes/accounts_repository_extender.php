@@ -52,9 +52,10 @@ class accounts_repository_extender extends accounts_repository
         
         $ip       = get_remote_address();
         $country  = get_geoip_location_data($ip, "country_code");
+        $id_acct  = "99" . $remote_id_account;
         
         $account = new account();
-        $account->id_account   = "99" . $remote_id_account;
+        $account->id_account   = $id_acct;
         $account->user_name    = $user_name.$suffix;
         $account->password     = md5(uniqid());
         $account->display_name = $user_display_name;
@@ -63,6 +64,11 @@ class accounts_repository_extender extends accounts_repository
         $account->level        = config::NEWCOMER_USER_LEVEL;
         $account->state        = "enabled";
         
+        # First recheck if the account exists.
+        $tmp_account = new account($id_acct);
+        if( $tmp_account->_exists ) return $tmp_account;
+        
+        # Now save it.
         try
         {
             $account->save();
