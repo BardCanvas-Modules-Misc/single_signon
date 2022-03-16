@@ -51,7 +51,7 @@ class accounts_repository_extender extends accounts_repository
         }
         
         $ip       = get_remote_address();
-        $country  = get_geoip_location_data($ip, "country_code");
+        $country  = get_geoip_country_code($ip);
         $id_acct  = "99" . $remote_id_account;
         
         $account = new account();
