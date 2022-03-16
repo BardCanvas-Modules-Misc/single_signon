@@ -1,6 +1,10 @@
 
 # Single Sign ON Module Change Log
 
+## [0.1.6] - 2022-03-16
+
+- Refactored IP Geolocation functions.
+
 ## [0.1.5] - 2021-12-13
 
 - Added check for existing accounts to avoid database error.
