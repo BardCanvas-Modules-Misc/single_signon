@@ -1,6 +1,10 @@
 
 # Single Sign ON Module Change Log
 
+## [0.1.7] - 2022-09-26
+
+- Input sanitization on Facebook helper script.
+
 ## [0.1.6] - 2022-03-16
 
 - Refactored IP Geolocation functions.
