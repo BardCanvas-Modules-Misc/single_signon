@@ -47,6 +47,8 @@ if( empty($app_id) ) die($current_module->language->messages->facebook->missing_
 $app_secret = $settings->get("modules:single_signon.facebook_app_secret");
 if( empty($app_secret) ) die($current_module->language->messages->facebook->missing_app_secret);
 
+$_POST["id"] = $_POST["id"] + 0;
+
 if( $_POST["method"] == "login" )
 {
     if( empty($_POST["id"])    ) die($current_module->language->messages->facebook->missing_account_id);
