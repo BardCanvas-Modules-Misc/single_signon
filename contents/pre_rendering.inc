@@ -28,11 +28,14 @@ if( $template->layout == "admin" ) return;
 if( empty($_SESSION) ) session_start();
 $_SESSION["single_signon_csrf_token"] = uniqid("", true);
 
-if( ! empty($template->page_extra_metas["fb:app_id"]) ) return;
-
-$app_id = $config->globals["facebook_app_id"];
-if( empty($app_id) ) $app_id = $settings->get("modules:single_signon.facebook_app_id");
-if( empty($app_id) ) return;
-
-$config->globals["facebook_app_id"] = $app_id;
-$template->page_extra_metas["fb:app_id"] = "<meta property='fb:app_id' content='$app_id'>";
+if( empty($template->page_extra_metas["fb:app_id"]) )
+{
+    $app_id = $config->globals["facebook_app_id"];
+    if( empty($app_id) ) $app_id = $settings->get("modules:single_signon.facebook_app_id");
+    
+    if( ! empty($app_id) )
+    {
+        $config->globals["facebook_app_id"] = $app_id;
+        $template->page_extra_metas["fb:app_id"] = "<meta property='fb:app_id' content='$app_id'>";
+    }
+}

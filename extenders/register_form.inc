@@ -17,12 +17,15 @@ global $config, $settings, $template, $account, $xaccount;
 
 # This is an admin creating an account manually.
 if( $template->layout == "admin" ) return;
-?>
 
-<!-- Single Sign On connect -->
-
-<div class="sso_connect framed_content aligncenter">
-    <? if( empty($account->engine_prefs["facebook:id"]) ): ?>
+$app_id = $settings->get("modules:single_signon.facebook_app_id");
+if( ! empty($app_id) )
+{
+    ?>
+    
+    <!-- Single Sign On connect -->
+    
+    <div class="sso_connect framed_content aligncenter">
         
         <p>
             <?= $this_module->language->facebook->invitation ?>
@@ -33,33 +36,7 @@ if( $template->layout == "admin" ) return;
                 <?= $this_module->language->facebook->connect ?></span>
         </p>
         
-    <? else: ?>
-        
-        <p>
-            <?= $this_module->language->facebook->already_connected ?>
-        </p>
-        <p>
-            <span class="framed_content state_ko">
-                <i class="fa fa-info-circle"></i>
-                <?= $this_module->language->facebook->cannot_connect_other ?>
-            </span>
-        </p>
-        <div class="multicol cols-2 aligncenter">
-            <div class="col">
-                <p>
-                    <a href="https://www.facebook.com/<?= $account->engine_prefs["facebook:id"] ?>"
-                       target="_blank"><i class="fa fa-external-link-square"></i>
-                        <?= $this_module->language->facebook->go_to_my_facebook_page ?></a>
-                </p>
-            </div>
-            <div class="col">
-                <p>
-                    <a href="<?= $config->full_root_path ?>/accounts/edit_account.php"
-                    ><i class="fa fa-pencil-square-o"></i>
-                        <?= $this_module->language->edit_my_profile ?></a>
-                </p>
-            </div>
-        </div>
-        
-    <? endif; ?>
-</div>
+    </div>
+    
+    <?
+}
