@@ -10,6 +10,7 @@
     </description>
     
     <login_with_facebook>Abrir sesion con Facebook</login_with_facebook>
+    <login_with_facebook>Abrir sesión con Facebook</login_with_facebook>
     
     <facebook>
         <invitation>¿Tienes una cuenta en Facebook?</invitation>
