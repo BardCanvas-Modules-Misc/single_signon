@@ -58,3 +58,15 @@ if( ! empty($app_id) && ! empty($app_secret) )
         <?
     }
 }
+
+$app_id = $settings->get("modules:single_signon.twitch_app_id");
+if( ! empty($app_id) )
+{
+    ?>
+        
+    <!-- Twitch Single Sign On functions -->
+    
+    <script type="text/javascript" src="<?= $config->full_root_path ?>/single_signon/media/twitch_functions~v1.0.0-1.js"></script>
+    
+    <?
+}

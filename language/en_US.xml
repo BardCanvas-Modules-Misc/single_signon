@@ -10,6 +10,7 @@
     </description>
     
     <login_with_facebook>Login with Facebook</login_with_facebook>
+    <login_with_twitch>Login with Twitch</login_with_twitch>
     
     <facebook>
         <invitation>Do you have a Facebook account?</invitation>
@@ -36,6 +37,43 @@
         ]]></disconnect_prompt>
     </facebook>
     
+    <twitch>
+        <invitation>Do you have a Twitch account?</invitation>
+        <connect>Connect with Twitch</connect>
+        <user_connected>This user has a Twitch account conected with a local account.</user_connected>
+        <already_connected>You have your Twitch account conected with your local account.</already_connected>
+        <cannot_connect_other>You cannot have a Twitch account connected to more than one user account on this website.</cannot_connect_other>
+        <not_connected>Do you have a Twitch account? You can connect it with your local account!</not_connected>
+        <go_to_my_twitch_page>Go to my Twitch page</go_to_my_twitch_page>
+        <go_to_user_twitch_page>Go to user's Twitch page</go_to_user_twitch_page>
+        <disconnect>Disconnect from Twitch</disconnect>
+        <disconnect_prompt><![CDATA[
+            Note: your Twitch account will be unlinked from your local
+            profile, but no notification will be sent to Twitch.
+             
+            Your local account won't be deleted. Your current session
+            will remain open until you logout.
+             
+            If you didn't set a password for your account, you will have to
+            request a reset from the login form and use your user name or
+            alias to login afterwards.
+             
+            Do you want to proceed?
+        ]]></disconnect_prompt>
+    </twitch>
+
+    <logged_in>
+        <info><![CDATA[
+            You have an open session.
+            If you wish to link your local account to your account on %s,
+            please do it from the account editor.<br><br>
+            If you want to create a new account using %1$s,
+            please logout first.
+        ]]></info>
+        <go_to_my_account>Edit my account</go_to_my_account>
+        <logout>Logout</logout>
+    </logged_in>
+    
     <edit_my_profile>Edit my local profile</edit_my_profile>
     
     <messages>
@@ -51,15 +89,24 @@
             <account_not_linked>This local account is not linked to any Facebook account</account_not_linked>
             <already_linked>Sorry, but your Facebook account is already linked to another account on this website. You should logout now and login with Facebook to get to the actual linked account.</already_linked>
         </facebook>
+        <twitch>
+            <incoming_error>Twitch error</incoming_error>
+            <go_back>Go back to %s</go_back>
+            <error_on_remote_call>Error on call to Twitch API: </error_on_remote_call>
+            <unconfigured>Sorry, but Twitch integration settings are incomplete.</unconfigured>
+            <account_not_linked>This local account is not linked to any Twitch account</account_not_linked>
+            <already_linked>Sorry, but your Twitch account is already linked to another account on this website. You should logout now and login with Twitch to get to the actual linked account.</already_linked>
+        </twitch>
         <user_registration_disabled>Sorry, but the accounts registration service is disabled.</user_registration_disabled>
     </messages>
     
     <settings_data>
         <title>Single Sign On</title>
         
+        <specs is_separator="true">Facebook</specs>
+        
         <specs key="facebook_app_id">
             <title><![CDATA[
-                <span class="framed_content inlined">Facebook</span>
                 App Id
             ]]></title>
             <description><![CDATA[
@@ -75,7 +122,6 @@
         
         <specs key="facebook_app_secret">
             <title><![CDATA[
-                <span class="framed_content inlined">Facebook</span>
                 App Secret
             ]]></title>
             <description><![CDATA[
@@ -85,6 +131,38 @@
                 that also requires your App Secret,
                 you must make sure that you're using the same key or the Facebook SDK
                 will fail.
+            ]]></description>
+            <type>text</type>
+        </specs>
+        
+        <specs is_separator="true">Twitch</specs>
+        
+        <specs key="twitch_app_id">
+            <title><![CDATA[
+                Client Id
+            ]]></title>
+            <description><![CDATA[
+                Specify the Twitch App Client Id for your website.<br>
+            ]]></description>
+            <type>text</type>
+        </specs>
+        
+        <specs key="twitch_app_secret">
+            <title><![CDATA[
+                Client Secret
+            ]]></title>
+            <description><![CDATA[
+                Specify your Twitch App Client Secret.
+            ]]></description>
+            <type>text</type>
+        </specs>
+        
+        <specs key="twitch_login_ok_redir">
+            <title><![CDATA[
+                Page to open after successful login
+            ]]></title>
+            <description><![CDATA[
+                Type the URL to send the user after a successful login with Twitch.
             ]]></description>
             <type>text</type>
         </specs>

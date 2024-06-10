@@ -9,8 +9,8 @@
         Nota: Sólo Facebook es soportado por el momento.
     </description>
     
-    <login_with_facebook>Abrir sesion con Facebook</login_with_facebook>
     <login_with_facebook>Abrir sesión con Facebook</login_with_facebook>
+    <login_with_twitch>Abrir sesión con Twitch</login_with_twitch>
     
     <facebook>
         <invitation>¿Tienes una cuenta en Facebook?</invitation>
@@ -37,6 +37,45 @@
         ]]></disconnect_prompt>
     </facebook>
     
+    <twitch>
+        <invitation>¿Tienes una cuenta en Twitch?</invitation>
+        <connect>Conectar con Twitch</connect>
+        <user_connected>Este usuario tiene una cuenta de Twitch conectada con una cuenta local.</user_connected>
+        <already_connected>Ya tienes una cuenta de Twitch conectada con tu cuenta local.</already_connected>
+        <cannot_connect_other>No puedes tener una cuenta de Twitch conectada con más de una cuenta de usuario en este sitio web.</cannot_connect_other>
+        <not_connected>¿Tienes una cuenta en Twitch? ¡Puedes conectarla con tu cuenta local!</not_connected>
+        <go_to_my_twitch_page>Ir a mi página en Twitch</go_to_my_twitch_page>
+        <go_to_user_twitch_page>Ir a la página del usuario en Twitch</go_to_user_twitch_page>
+        <disconnect>Desconectar de Twitch</disconnect>
+        <disconnect_prompt><![CDATA[
+            Nota: tu cuenta de Twitch será desconectada de tu perfil
+            local, pero no se notificará a Twitch al respecto.
+             
+            Tu cuenta local no será eliminada. Tu sesión actual
+            permanecerá abierta hasta que la cierres manualmente.
+             
+            Si no especificaste una contraseña para tu cuenta,
+            deberás reiniciarla desde la forma de acceso y usar tu
+            nombre de usuario o alias para abrir sesion posteriormente.
+             
+            ¿Deseas proceder?
+        ]]></disconnect_prompt>
+    </twitch>
+    
+    <logged_in>
+        <info><![CDATA[
+            Tienes una sesión abierta.
+            Si deseas vincular tu cuenta local con tu cuenta en %s,
+            dirígete a "Mi cuenta" y hazlo desde ahí.<br><br>
+            Si deseas crear una cuenta nueva usando %1$s,
+            cierra tu sesión primero.
+        ]]></info>
+        <go_to_my_account>Editar mi cuenta</go_to_my_account>
+        <logout>Salir</logout>
+    </logged_in>
+    
+    <edit_my_profile>Edit my local profile</edit_my_profile>
+    
     <messages>
         <session_token_not_found>Token de sesion no encontrado. Por favor recarga la página e intenta de nuevo.</session_token_not_found>
         <facebook>
@@ -50,16 +89,25 @@
             <account_not_linked>Esta cuenta no está localmente conectada a ninguna cuenta de Facebook</account_not_linked>
             <already_linked>Lo sentimpos, pero tu cuenta de Facebook ya está conectada a otra cuenta en este sitio web. Deberías cerrar sesión y reabrirla con Facebook para ir a la cuenta actualmente conectada.</already_linked>
         </facebook>
+        <twitch>
+            <incoming_error>Error de Twitch</incoming_error>
+            <go_back>Regresar a %s</go_back>
+            <error_on_remote_call>Error al llamar a la API de Twitch: </error_on_remote_call>
+            <unconfigured>Disculpa, pero la configuración de la integración con Twitch está incompleta.</unconfigured>
+            <account_not_linked>Esta cuenta no está localmente conectada a ninguna cuenta de Twitch</account_not_linked>
+            <already_linked>Lo sentimpos, pero tu cuenta de Twitch ya está conectada a otra cuenta en este sitio web. Deberías cerrar sesión y reabrirla con Facebook para ir a la cuenta actualmente conectada.</already_linked>
+        </twitch>
         <user_registration_disabled>Lo sentimos, pero el registro de cuentas está deshabilitado.</user_registration_disabled>
     </messages>
     
     <settings_data>
         <title>Inicio de sesión único</title>
         
+        <specs is_separator="true">Facebook</specs>
+        
         <specs key="facebook_app_id">
             <title><![CDATA[
-                Id de aplicación en
-                <span class="framed_content inlined">Facebook</span>
+                Id de aplicación
             ]]></title>
             <description><![CDATA[
                 Especifica la id de aplicación de Facebook para tu sitio web.<br>
@@ -74,8 +122,7 @@
         
         <specs key="facebook_app_secret">
             <title><![CDATA[
-                Llave secreta de aplicación en
-                <span class="framed_content inlined">Facebook</span>
+                Llave secreta de aplicación
             ]]></title>
             <description><![CDATA[
                 Especifica la llave secreta de aplicación de Facebook para tu sitio web.<br>
@@ -84,6 +131,38 @@
                 que también requiera tu llave secreta,
                 debes asegurarte de que estás usando la misma llave o el
                 kit de servicios de Facebook fallará.
+            ]]></description>
+            <type>text</type>
+        </specs>
+        
+        <specs is_separator="true">Twitch</specs>
+        
+        <specs key="twitch_app_id">
+            <title><![CDATA[
+                Id de cliente
+            ]]></title>
+            <description><![CDATA[
+                Especifica el identificador de cliente de la app de Twitch para tu sitio web.
+            ]]></description>
+            <type>text</type>
+        </specs>
+        
+        <specs key="twitch_app_secret">
+            <title><![CDATA[
+                Llave secreta
+            ]]></title>
+            <description><![CDATA[
+                Especifica la llave secreta de la app de Twitch.
+            ]]></description>
+            <type>text</type>
+        </specs>
+        
+        <specs key="twitch_login_ok_redir">
+            <title><![CDATA[
+                Página a abrir tras acceso exitoso
+            ]]></title>
+            <description><![CDATA[
+                Especifica la URL a la cual el usuario será enviado tras abrir sesión de forma exitosa con Twitch.
             ]]></description>
             <type>text</type>
         </specs>
