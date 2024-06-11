@@ -1,6 +1,11 @@
 
 # Single Sign ON Module Change Log
 
+## [0.2.0] - 2024-06-11
+
+- Tuning to allow adding further providers.
+- Added Twitch support.
+
 ## [0.1.7] - 2022-09-26
 
 - Input sanitization on Facebook helper script.
