@@ -291,7 +291,7 @@ if( substr($state, 0, 1) == "R" )
     }
     
     $mem_cache->set($mem_key, $account, 0, $mem_ttl);
-    cli_colortags::write("<light_green>Found existing account #{$account->id_account} ('{$account->display_name}', @{$account->user_name}).</light_green>\n");
+    cli_colortags::write("<light_green>Created account #{$account->id_account} ('{$account->display_name}', @{$account->user_name}).</light_green>\n");
     cli_colortags::write("<light_green>ALRU {$state} updated.</light_green>\n");
     
     # Let's open the session.
