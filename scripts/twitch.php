@@ -13,6 +13,7 @@
  */
 
 use hng2_base\config;
+use hng2_base\device;
 use hng2_base\module;
 use hng2_modules\single_signon\twitch_api_client;
 use hng2_tools\cli;
@@ -80,9 +81,7 @@ if( $_REQUEST["method"] == "unlink" )
         "twitch:refresh_token" => "",
     );
     
-    foreach($fields as $field => $value)
-        if(empty($account->engine_prefs[$field]))
-            $account->set_engine_pref($field, $value);
+    foreach($fields as $field => $value) $account->set_engine_pref($field, $value);
     
     die("OK");
 }
@@ -294,6 +293,17 @@ if( substr($state, 0, 1) == "R" )
     $mem_cache->set($mem_key, $account, 0, $mem_ttl);
     cli_colortags::write("<light_green>Found existing account #{$account->id_account} ('{$account->display_name}', @{$account->user_name}).</light_green>\n");
     cli_colortags::write("<light_green>ALRU {$state} updated.</light_green>\n");
+    
+    # Let's open the session.
+    $device = new device($account->id_account);
+    if( ! $device->_exists )
+    {
+        $device->set_new($account);
+        $device->state = "enabled";
+        $device->save();
+    }
+    $account->open_session($device);
+    
     cli_colortags::write("<light_green>Session opened. Redirecting the user to $redir_url.</light_green>\n\n");
     
     header("Content-Type: text/html; chrset=utf-8");
