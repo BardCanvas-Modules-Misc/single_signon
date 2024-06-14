@@ -1,6 +1,14 @@
 
 # Single Sign ON Module Change Log
 
+## [0.2.1] - 2024-06-14
+
+- Added extension point on the Twitch client.
+- Tuned Twitch section of the account edit form.
+- Added missing autologin after account creation. using Twitch.
+- Fixed problems when setting account prefs.
+- Fixed some link issues and captions.
+
 ## [0.2.0] - 2024-06-11
 
 - Tuning to allow adding further providers.
