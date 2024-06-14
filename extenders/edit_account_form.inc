@@ -122,23 +122,23 @@ if( ! empty($app_id) )
 $app_id = $settings->get("modules:single_signon.twitch_app_id");
 if( ! empty($app_id) )
 {
-    $sess_token = "B" . md5($config->website_key . "/single_signon/twitch/" . microtime(true));
-    $mem_key    = "@single_signon.temp_token:" . $sess_token;
-    $mem_data   = $account->id_account;
-    $mem_ttl    = 60 * 60;
-    $mem_cache->set($mem_key, $mem_data, 0, $mem_ttl);
-    
-    $state_code = $sess_token;
-    $twitch_url = sprintf(
-        "https://id.twitch.tv/oauth2/authorize?client_id=%s&response_type=code&scope=%s&redirect_uri=%s&state=%s",
-        $app_id,
-        urlencode("user:read:email"),
-        urlencode("{$this_module->get_url(true)}/scripts/twitch.php"),
-        urlencode($state_code)
-    );
-    
     if( empty($account->engine_prefs["twitch:username"]) )
     {
+        $sess_token = "B" . md5($config->website_key . "/single_signon/twitch/" . microtime(true));
+        $mem_key    = "@single_signon.temp_token:" . $sess_token;
+        $mem_data   = $account->id_account;
+        $mem_ttl    = 60 * 60;
+        $mem_cache->set($mem_key, $mem_data, 0, $mem_ttl);
+        
+        $state_code = $sess_token;
+        $twitch_url = sprintf(
+            "https://id.twitch.tv/oauth2/authorize?client_id=%s&response_type=code&scope=%s&redirect_uri=%s&state=%s",
+            $app_id,
+            urlencode("user:read:email"),
+            urlencode("{$this_module->get_url(true)}/scripts/twitch.php"),
+            urlencode($state_code)
+        );
+        
         $segments["twitch"] = "
             <p>
                 {$this_module->language->twitch->not_connected}
