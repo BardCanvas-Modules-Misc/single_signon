@@ -217,7 +217,9 @@ class twitch_api_client
      */
     public function create_local_account($twitch_user, $twitch_token)
     {
-        global $config, $settings;
+        global $config, $settings, $modules;
+        
+        $current_module = $modules["single_signon"];
         
         $country = $settings->get("modules:accounts.default_country");
         if( empty($country) ) $country = "us";
@@ -257,6 +259,11 @@ class twitch_api_client
             "twitch:expires_in"    => $twitch_token["expires_in"],
             "twitch:refresh_token" => $twitch_token["refresh_token"],
         );
+        
+        $config->globals["@single_sign_on.new_account_record"] = $account;
+        $config->globals["@single_sign_on.new_account_fields"] = $fields;
+        $current_module->load_extensions("twitch_api_client", "after_creating_account");
+        $fields = $config->globals["@single_sign_on.new_account_fields"];
         
         foreach($fields as $field => $value)
             if(empty($account->engine_prefs[$field]))
