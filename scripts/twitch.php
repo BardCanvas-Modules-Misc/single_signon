@@ -402,8 +402,8 @@ if( $xaccount->_exists )
         <title>Account linking error</title>
         </head><body>
         <h1>Unable to link account</h1>
-        <p>Your Twitch account is already linked to <a href='{$config->full_root_path}/user/{$account->user_name}'
-           target='_blank'>@{$account->display_name}</a>'s account in our website.</p>
+        <p>Your Twitch account is already linked to <a href='{$config->full_root_path}/user/{$xaccount->user_name}'
+           target='_blank'>@{$xaccount->display_name}</a>'s account in our website.</p>
         <p>If you think this is wrong, please head over our contact page and send us a message.</p>
         <p><a href='{$config->full_root_path}/accounts/edit_account.php'>Go back to account editor.</a></p>
         </body></html>
