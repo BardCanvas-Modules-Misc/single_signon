@@ -107,7 +107,7 @@ if( ! empty($_REQUEST["error"]) )
         </head><body>
         <h1>{$_REQUEST["error"]}</h1>
         <p>{$_REQUEST["error_description"]}</p>
-        <p><a href='{$config->full_root_path}'>{$back_link}</a></p>
+        <p><a href='{$config->full_root_path}/'>{$back_link}</a></p>
         </body></html>
     "));
 }
@@ -128,7 +128,7 @@ if( empty($code) || empty($scope) || empty($state) )
         </head><body>
         <h1>Missing arguments</h1>
         <p>The required arguments to process the request are incomplete or missing.</p>
-        <p><a href='{$config->full_root_path}'>{$back_link}</a></p>
+        <p><a href='{$config->full_root_path}/'>{$back_link}</a></p>
         </body></html>
     "));
 }
@@ -157,7 +157,7 @@ catch(\Exception $e)
         </head><body>
         <h1>Error fetching authorization token</h1>
         <p>{$e->getMessage()}</p>
-        <p><a href='{$config->full_root_path}'>{$back_link}</a></p>
+        <p><a href='{$config->full_root_path}/'>{$back_link}</a></p>
         </body></html>"
     ));
 }
