@@ -420,9 +420,7 @@ $fields = array(
     "twitch:refresh_token" => $twitch_token["refresh_token"],
 );
 
-foreach($fields as $field => $value)
-    if(empty($account->engine_prefs[$field]))
-        $account->set_engine_pref($field, $value);
+foreach($fields as $field => $value) $account->set_engine_pref($field, $value);
 
 $after_login_url = "{$config->full_root_url}/accounts/edit_account.php";
 cli_colortags::write("<green>Account linked.</green>\n");

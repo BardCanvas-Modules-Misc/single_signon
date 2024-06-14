@@ -200,9 +200,7 @@ class twitch_api_client
                 "twitch:refresh_token" => $twitch_token["refresh_token"],
             );
             
-            foreach($fields as $field => $value)
-                if(empty($account->engine_prefs[$field]))
-                    $account->set_engine_pref($field, $value);
+            foreach($fields as $field => $value) $account->set_engine_pref($field, $value);
         }
         
         return $account;
@@ -265,9 +263,7 @@ class twitch_api_client
         $current_module->load_extensions("twitch_api_client", "after_creating_account");
         $fields = $config->globals["@single_sign_on.new_account_fields"];
         
-        foreach($fields as $field => $value)
-            if(empty($account->engine_prefs[$field]))
-                $account->set_engine_pref($field, $value);
+        foreach($fields as $field => $value) $account->set_engine_pref($field, $value);
         
         return $account;
     }
