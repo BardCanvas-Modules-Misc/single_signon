@@ -11,6 +11,7 @@
     
     <login_with_facebook>Login with Facebook</login_with_facebook>
     <login_with_twitch>Login with Twitch</login_with_twitch>
+    <or>or</or>
     
     <facebook>
         <invitation>Do you have a Facebook account?</invitation>

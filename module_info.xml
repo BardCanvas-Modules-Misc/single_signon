@@ -38,7 +38,7 @@
     <extends_to>
         <accounts>
             <login_form>
-                <top>extenders/login_form.inc</top>
+                <bottom>extenders/login_form.inc</bottom>
             </login_form>
             <register_form>
                 <top>extenders/register_form.inc</top>

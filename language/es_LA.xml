@@ -11,6 +11,7 @@
     
     <login_with_facebook>Abrir sesión con Facebook</login_with_facebook>
     <login_with_twitch>Abrir sesión con Twitch</login_with_twitch>
+    <or>o</or>
     
     <facebook>
         <invitation>¿Tienes una cuenta en Facebook?</invitation>
