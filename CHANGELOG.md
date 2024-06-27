@@ -1,6 +1,10 @@
 
 # Single Sign ON Module Change Log
 
+## [0.2.2] - 2024-06-27
+
+- Improved login form layout.
+
 ## [0.2.1] - 2024-06-14
 
 - Added extension point on the Twitch client.
