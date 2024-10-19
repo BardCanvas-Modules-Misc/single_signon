@@ -79,7 +79,7 @@ if( ! empty($telegram_bot) && ! empty($telegram_token) )
         
     <!-- Telegram Single Sign On functions -->
     
-    <script type="text/javascript" src="<?= $config->full_root_path ?>/single_signon/media/telegram_functions~v1.0.0-1.js"></script>
+    <script type="text/javascript" src="<?= $config->full_root_path ?>/single_signon/media/telegram_functions~v1.0.1.js"></script>
     
     <?
 }

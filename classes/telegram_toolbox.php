@@ -18,25 +18,34 @@ class telegram_toolbox
         $this->accounts_repo = new accounts_repository();
     }
     
-    public function validate_incoming_data(
-        $auth_date, $first_name, $hash, $id, $last_name, $photo_url, $username, $telegram_token
-    ) {
-        $data_check_arr = array(
-            "auth_date=$auth_date"   ,
-            "first_name=$first_name" ,
-            "id=$id"                 ,
-            "last_name=$last_name"   ,
-            "photo_url=$photo_url"   ,
-            "username=$username"     ,
-        );
+    public function validate_incoming_data($data, $hash, $telegram_token)
+    {
+        global $config;
+        
+        $data_check_arr = array();
+        $data_copy      = array();
+        foreach($data as $key => $val)
+        {
+            $val = trim(stripslashes($val));
+            if( empty($val) ) continue;
+            $data_check_arr[] = "$key=$val";
+            $data_copy[$key] = $val;
+        }
         sort($data_check_arr);
         $data_check_string = implode("\n", $data_check_arr);
-        $secret_key        = hash('sha256', $telegram_token, true);
-        $my_hash           = hash_hmac('sha256', $data_check_string, $secret_key);
+        $secret_key        = hash("sha256", $telegram_token, true);
+        $my_hash           = hash_hmac("sha256", $data_check_string, $secret_key);
         
-        if (strcmp($hash, $my_hash) !== 0) throw new \Exception("Data mismatch");
+        if (strcmp($hash, $my_hash) !== 0)
+        {
+            $config->globals["@tg_auth:in_data"] = json_encode($data);
+            $config->globals["@tg_auth:my_data"] = json_encode($data_copy);
+            $config->globals["@tg_auth:in_hash"] = $hash;
+            $config->globals["@tg_auth:my_hash"] = $my_hash;
+            throw new \Exception("Data mismatch");
+        }
         
-        if( (time() - $auth_date) > 86400 ) throw new \Exception("Data outdated");
+        if( (time() - $data["auth_date"]) > 86400 ) throw new \Exception("Data outdated");
     }
     
     /**
@@ -49,6 +58,8 @@ class telegram_toolbox
      */
     public function find_local_account($id, $username, $open_session = true)
     {
+        if( empty($username) ) $username = $id;
+        
         $filter = array("
                       id_account in (
                           select aep.id_account
@@ -102,7 +113,14 @@ class telegram_toolbox
         $account->display_name  = preg_replace('/[^a-zA-Z0-9 _.-]/', "", trim("$first_name $last_name"));
         $account->country       = strtolower($country);
         
-        if( empty($account->display_name) ) $account->display_name = $account->user_name;
+        if( empty($account->user_name) || is_numeric($account->user_name) )
+            $account->user_name = preg_replace('/[^a-zA-Z0-9_-]/', "", wp_sanitize_filename(trim("$first_name $last_name")));
+        
+        if( empty($account->user_name) || strlen($account->user_name) < 5 )
+            $account->user_name = "user_" . time();
+        
+        if( empty($account->display_name) || is_numeric($account->display_name) )
+            $account->display_name = $account->user_name;
         
         $filter = array("user_name like '{$account->user_name}%'");
         $count = $this->accounts_repo->get_record_count($filter);

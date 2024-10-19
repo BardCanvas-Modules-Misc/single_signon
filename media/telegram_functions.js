@@ -3,14 +3,8 @@ function SSO_telegram_login(data)
 {
     let url    = $_FULL_ROOT_PATH + '/single_signon/scripts/telegram.php';
     let params = {
-        mode:       'login',
-        auth_date:  data.auth_date,
-        first_name: data.first_name,
-        hash:       data.hash,
-        id:         data.id,
-        last_name:  data.last_name,
-        photo_url:  data.photo_url,
-        username:   data.username
+        mode: 'login',
+        data: data
     };
     
     $.blockUI(blockUI_default_params);
@@ -32,14 +26,8 @@ function SSO_telegram_register(data)
 {
     let url    = $_FULL_ROOT_PATH + '/single_signon/scripts/telegram.php';
     let params = {
-        mode:       'register',
-        auth_date:  data.auth_date,
-        first_name: data.first_name,
-        hash:       data.hash,
-        id:         data.id,
-        last_name:  data.last_name,
-        photo_url:  data.photo_url,
-        username:   data.username
+        mode: 'register',
+        data: data
     };
     
     $.blockUI(blockUI_default_params);
@@ -64,14 +52,8 @@ function SSO_telegram_link(data)
 {
     let url    = $_FULL_ROOT_PATH + '/single_signon/scripts/telegram.php';
     let params = {
-        mode:       'link',
-        auth_date:  data.auth_date,
-        first_name: data.first_name,
-        hash:       data.hash,
-        id:         data.id,
-        last_name:  data.last_name,
-        photo_url:  data.photo_url,
-        username:   data.username
+        mode: 'link',
+        data: data
     };
     
     $.blockUI(blockUI_default_params);
