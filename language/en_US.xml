@@ -62,7 +62,17 @@
             Do you want to proceed?
         ]]></disconnect_prompt>
     </twitch>
-
+    
+    <telegram>
+        <invitation>Do you have a Telegram account?</invitation>
+        <user_connected>This user has a Telegram account conected with a local account.</user_connected>
+        <go_to_user_page>Go to user's Telegram page</go_to_user_page>
+        <open_telegram>Open Telegram web</open_telegram>
+        <not_connected>Do you have a Telegram account? You can connect it with your local account!</not_connected>
+        <already_connected>You have your Telegram account conected with your local account.</already_connected>
+        <disconnect>Disconnect from Telegram</disconnect>
+    </telegram>
+    
     <logged_in>
         <info><![CDATA[
             You have an open session.
@@ -99,6 +109,18 @@
             <already_linked>Sorry, but your Twitch account is already linked to another account on this website. You should logout now and login with Twitch to get to the actual linked account.</already_linked>
         </twitch>
         <user_registration_disabled>Sorry, but the accounts registration service is disabled.</user_registration_disabled>
+        <telegram>
+            <unconfigured>Sorry, but Telegram integration settings are incomplete.</unconfigured>
+            <login_attempt_failed>Login attempt failed: %s. Please reload the page and try again.</login_attempt_failed>
+            <registration_attempt_failed>Registration attempt failed: %s. Please reload the page and try again.</registration_attempt_failed>
+            <linking_attempt_failed>Linking attempt failed: %s.</linking_attempt_failed>
+            <unlinking_attempt_failed>Unlinking attempt failed: %s.</unlinking_attempt_failed>
+            <account_not_found>Sorry, but your Telegram account is not linked to any account on our webste. Please go to our registration page and use Telegram login from there.</account_not_found>
+            <account_already_exists>Sorry, but there is another account already linked to your Telegram account.</account_already_exists>
+            <account_not_found2>We couldn't find any account linked to your Telegram account.</account_not_found2>
+            <account_mismatch>Sorry, but your Telegram account is not linked to this local account.</account_mismatch>
+            <missing_account_email>Your account doesn't have an email set. Please set an email, or you won't be able to reset your password.</missing_account_email>
+        </telegram>
     </messages>
     
     <settings_data>
@@ -164,6 +186,28 @@
             ]]></title>
             <description><![CDATA[
                 Type the URL to send the user after a successful login with Twitch.
+            ]]></description>
+            <type>text</type>
+        </specs>
+        
+        <specs is_separator="true">Telegram</specs>
+        
+        <specs key="telegram_bot_username">
+            <title><![CDATA[
+                Telegram bot username
+            ]]></title>
+            <description><![CDATA[
+                Specify the bot username used for authenticating in Telegram.
+            ]]></description>
+            <type>text</type>
+        </specs>
+        
+        <specs key="telegram_bot_token">
+            <title><![CDATA[
+                Telegram bot token
+            ]]></title>
+            <description><![CDATA[
+                Specify the token used to authenticate the bot.
             ]]></description>
             <type>text</type>
         </specs>

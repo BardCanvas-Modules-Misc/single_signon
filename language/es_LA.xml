@@ -63,6 +63,16 @@
         ]]></disconnect_prompt>
     </twitch>
     
+    <telegram>
+        <invitation>¿Tienes una cuenta en Telegram?</invitation>
+        <user_connected>Este usuario tiene una cuenta de Telegram conectada a una cuenta local.</user_connected>
+        <go_to_user_page>Ir a la página del usuario</go_to_user_page>
+        <open_telegram>Abrir Telegram web</open_telegram>
+        <not_connected>¿Tienes una cuenta en Telegram? ¡Puedes conectarla con tu cuenta local!</not_connected>
+        <already_connected>Tienes tu cuenta de Telegram conectada con tu cuenta local.</already_connected>
+        <disconnect>Desconectar Telegram</disconnect>
+    </telegram>
+    
     <logged_in>
         <info><![CDATA[
             Tienes una sesión abierta.
@@ -99,6 +109,18 @@
             <already_linked>Lo sentimpos, pero tu cuenta de Twitch ya está conectada a otra cuenta en este sitio web. Deberías cerrar sesión y reabrirla con Facebook para ir a la cuenta actualmente conectada.</already_linked>
         </twitch>
         <user_registration_disabled>Lo sentimos, pero el registro de cuentas está deshabilitado.</user_registration_disabled>
+        <telegram>
+            <unconfigured>Disculpa, pero la configuración de Telegram está incompleta.</unconfigured>
+            <login_attempt_failed>Intento de acceso fallido: %s. Por favor recarga la página e intenta de nuevo.</login_attempt_failed>
+            <registration_attempt_failed>Intento de registro fallido: %s. Por favor recarga la página e intenta de nuevo.</registration_attempt_failed>
+            <linking_attempt_failed>Intento de vinculación fallido: %s.</linking_attempt_failed>
+            <unlinking_attempt_failed>Intento de desvinculación fallido: %s.</unlinking_attempt_failed>
+            <account_not_found>Disculpa, pero tu cuenta de Telegram no está conectada a ninguna cuenta en nuestro sitio web. Por favor dirígete a la página de registro y usa el acceso a Telegram desde ahí.</account_not_found>
+            <account_already_exists>Disculpa, pero hay otra cuenta ya conectada con tu cuenta de Telegram.</account_already_exists>
+            <account_not_found2>No se ha encontrado ninguna cuenta vinculada con tu cuenta de Telegram.</account_not_found2>
+            <account_mismatch>Disculpa, pero tu cuenta de Telegram no está vinculada a esta cuenta.</account_mismatch>
+            <missing_account_email>Tu cuenta no tiene un correo electrónico definido. Por favor ingrésala o no podrás reiniciar la contraseña para abrir sesión.</missing_account_email>
+        </telegram>
     </messages>
     
     <settings_data>
@@ -164,6 +186,28 @@
             ]]></title>
             <description><![CDATA[
                 Especifica la URL a la cual el usuario será enviado tras abrir sesión de forma exitosa con Twitch.
+            ]]></description>
+            <type>text</type>
+        </specs>
+        
+        <specs is_separator="true">Telegram</specs>
+        
+        <specs key="telegram_bot_username">
+            <title><![CDATA[
+                Bot de Telegram
+            ]]></title>
+            <description><![CDATA[
+                Especifica el nombre de usuario del bot usado para autenticarse en Telegram.
+            ]]></description>
+            <type>text</type>
+        </specs>
+        
+        <specs key="telegram_bot_token">
+            <title><![CDATA[
+                Token del bot
+            ]]></title>
+            <description><![CDATA[
+                Especifica el token usado para autenticarse con el bot.
             ]]></description>
             <type>text</type>
         </specs>

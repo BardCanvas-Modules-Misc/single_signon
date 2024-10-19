@@ -49,6 +49,20 @@ if( $template->layout == "admin" )
         ";
     }
     
+    if( ! empty($xaccount->engine_prefs["telegram:username"]) )
+    {
+        $segments["telegram"] = "
+            <p>
+                {$this_module->language->telegram->user_connected}
+            </p>
+            <p>
+                <a href='https://t.me/{$xaccount->engine_prefs["telegram:username"]}'
+                   target='_blank'><i class='fa fa-external-link-square'></i>
+                   {$this_module->language->telegram->go_to_user_page}</a>
+            </p>
+        ";
+    }
+    
     if( ! empty($segments) )
     {
         $cols  = count($segments);
@@ -165,6 +179,45 @@ if( ! empty($app_id) )
             <p>
                 <span class='pseudo_link' onclick=\"twitch_disconnect( $(this).closest('form') )\"><i class='fa fa-unlink'></i>
                       {$this_module->language->twitch->disconnect}</span>
+            </p>
+            <div id='twitch_disconnect_prompt' style='display: none;'>$prompt</div>
+        ";
+    }
+}
+
+$telegram_bot   = str_replace("@", "", $settings->get("modules:single_signon.telegram_bot_username"));
+$telegram_token = $settings->get("modules:single_signon.telegram_bot_token");
+if( ! empty($telegram_bot) && ! empty($telegram_token) )
+{
+    if( empty($account->engine_prefs["telegram:username"]) )
+    {
+        $segments["telegram"] = "
+            <p>
+                {$this_module->language->telegram->not_connected}
+            </p>
+            <p>
+                <script async src='https://telegram.org/js/telegram-widget.js?22'
+                        data-telegram-login='{$telegram_bot}'
+                        data-size='large'
+                        data-onauth='SSO_telegram_link(user)'
+                        data-request-access='write'></script>
+            </p>
+        ";
+    }
+    else
+    {
+        $segments["telegram"] = "
+            <p>
+                {$this_module->language->telegram->already_connected}
+            </p>
+            <p>
+                <a href='https://t.me/{$account->engine_prefs["telegram:username"]}'
+                   target='_blank'><i class='fa fa-external-link-square'></i>
+                   {$this_module->language->telegram->open_telegram}</a>
+            </p>
+            <p>
+                <span class='pseudo_link' onclick='SSO_telegram_unlink()'><i class='fa fa-unlink'></i>
+                      {$this_module->language->telegram->disconnect}</span>
             </p>
             <div id='twitch_disconnect_prompt' style='display: none;'>$prompt</div>
         ";

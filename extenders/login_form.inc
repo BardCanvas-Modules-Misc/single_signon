@@ -61,6 +61,21 @@ if( ! empty($app_id) )
     ";
 }
 
+$telegram_bot   = str_replace("@", "", $settings->get("modules:single_signon.telegram_bot_username"));
+$telegram_token = $settings->get("modules:single_signon.telegram_bot_token");
+if( ! empty($telegram_bot) && ! empty($telegram_token) )
+{
+    $output[] = "
+        <div class='aligncenter sso_telegram' style='margin: 10px 0 0 0'>
+            <script async src='https://telegram.org/js/telegram-widget.js?22'
+                    data-telegram-login='{$telegram_bot}'
+                    data-size='large'
+                    data-onauth='SSO_telegram_login(user)'
+                    data-request-access='write'></script>
+        </div>
+    ";
+}
+
 if( ! empty($output) )
 {
     echo "<div class=\"aligncenter sso_or\" style=\"margin: 10px 0\">";
