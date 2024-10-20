@@ -35,6 +35,21 @@ if( $template->layout == "admin" )
         ";
     }
     
+    if( ! empty($xaccount->engine_prefs["google:token"]) )
+    {
+        $gusername = current(explode("@", $xaccount->email));
+        $segments["google"] = "
+            <p>
+                {$this_module->language->google->user_connected}
+            </p>
+            <p>
+                <span class='google_email'>
+                   <i class='fa fa-google'></i> {$gusername}
+                </span>
+            </p>
+        ";
+    }
+    
     if( ! empty($xaccount->engine_prefs["twitch:username"]) )
     {
         $segments["twitch"] = "
@@ -59,21 +74,6 @@ if( $template->layout == "admin" )
                 <a href='https://t.me/{$xaccount->engine_prefs["telegram:username"]}'
                    target='_blank'><i class='fa fa-external-link-square'></i>
                    {$this_module->language->telegram->go_to_user_page}</a>
-            </p>
-        ";
-    }
-    
-    if( ! empty($xaccount->engine_prefs["google:token"]) )
-    {
-        $gusername = current(explode("@", $xaccount->email));
-        $segments["google"] = "
-            <p>
-                {$this_module->language->google->user_connected}
-            </p>
-            <p>
-                <span class='google_email'>
-                   <i class='fa fa-google'></i> {$gusername}
-                </span>
             </p>
         ";
     }
@@ -144,6 +144,44 @@ if( ! empty($app_id) )
                       {$this_module->language->facebook->disconnect}</span>
             </p>
             <div id='facebook_disconnect_prompt' style='display: none;'>$prompt</div>
+        ";
+    }
+}
+
+$client_id     = $settings->get("modules:single_signon.google_client_id");
+$client_secret = $settings->get("modules:single_signon.google_client_secret");
+if( ! empty($client_id) && ! empty($client_secret) )
+{
+    if( empty($xaccount->engine_prefs["google:token"]) )
+    {
+        $segments["google"] = "
+            <p>
+                {$this_module->language->google->not_connected}
+            </p>
+            <p>
+                <a class='framed_content pseudo_link' style='color: black; background: white; border-color: #E64035;'
+                   href='{$this_module->get_url()}/scripts/google.php?mode=link'><img src='{$this_module->get_url()}/media/google-icon.png'
+                   style='position: relative; top: 0.1em; height: 1.2em;'>
+                   {$this_module->language->google->connect}</a>
+            </p>
+        ";
+    }
+    else
+    {
+        $gusername = current(explode("@", $xaccount->email));
+        $segments["google"] = "
+            <p>
+                {$this_module->language->google->already_connected}
+            </p>
+            <p>
+                <span class='google_email'>
+                   <i class='fa fa-google'></i> {$gusername}
+                </span>
+            </p>
+            <p>
+                <span class='pseudo_link' onclick='SSO_google_unlink()'><i class='fa fa-unlink'></i>
+                      {$this_module->language->google->disconnect}</span>
+            </p>
         ";
     }
 }
@@ -235,44 +273,6 @@ if( ! empty($telegram_bot) && ! empty($telegram_token) )
                       {$this_module->language->telegram->disconnect}</span>
             </p>
             <div id='twitch_disconnect_prompt' style='display: none;'>$prompt</div>
-        ";
-    }
-}
-
-$client_id     = $settings->get("modules:single_signon.google_client_id");
-$client_secret = $settings->get("modules:single_signon.google_client_secret");
-if( ! empty($client_id) && ! empty($client_secret) )
-{
-    if( empty($xaccount->engine_prefs["google:token"]) )
-    {
-        $segments["google"] = "
-            <p>
-                {$this_module->language->google->not_connected}
-            </p>
-            <p>
-                <a class='framed_content pseudo_link' style='color: black; background: white; border-color: #E64035;'
-                   href='{$this_module->get_url()}/scripts/google.php?mode=link'><img src='{$this_module->get_url()}/media/google-icon.png'
-                   style='position: relative; top: 0.1em; height: 1.2em;'>
-                   {$this_module->language->google->connect}</a>
-            </p>
-        ";
-    }
-    else
-    {
-        $gusername = current(explode("@", $xaccount->email));
-        $segments["google"] = "
-            <p>
-                {$this_module->language->google->already_connected}
-            </p>
-            <p>
-                <span class='google_email'>
-                   <i class='fa fa-google'></i> {$gusername}
-                </span>
-            </p>
-            <p>
-                <span class='pseudo_link' onclick='SSO_google_unlink()'><i class='fa fa-unlink'></i>
-                      {$this_module->language->google->disconnect}</span>
-            </p>
         ";
     }
 }
