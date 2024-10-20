@@ -78,6 +78,24 @@ if( ! empty($telegram_bot) && ! empty($telegram_token) )
     ";
 }
 
+$client_id     = $settings->get("modules:single_signon.google_client_id");
+$client_secret = $settings->get("modules:single_signon.google_client_secret");
+if( ! empty($client_id) && ! empty($client_secret) )
+{
+    $redir_url = urlencode($_REQUEST["redir_url"]);
+    $segments["google"] = "
+        <p>
+            {$this_module->language->google->invitation}
+        </p>
+        <p>
+            <a class='framed_content pseudo_link' style='color: black; background-color: white; border-color: #E64035;'
+               href='{$this_module->get_url()}/scripts/google.php?mode=register&redir_url=$redir_url'
+               ><img src='{$this_module->get_url()}/media/google-icon.png' style='vertical-align: top; height: 1.2em;'>
+               {$this_module->language->google->connect}</a>
+        </p>
+    ";
+}
+
 
 
 if( ! empty($segments) )

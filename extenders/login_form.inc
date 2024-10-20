@@ -27,7 +27,7 @@ if( ! empty($app_id) && ! empty($app_secret) )
     $output[] = "
         <div class=\"aligncenter sso_facebook\" style=\"margin: 10px 0\">
             <div class=\"framed_content pseudo_link\" style=\"color: white; background-color: #3B5998; border: none;\"
-                 onclick=\"facebook_login_do( \$(this).closest('form'), '{$_GET["redir_url"]}' )\"><i class=\"fa fa-facebook-square\"></i>
+                 onclick=\"facebook_login_do( $(this).closest('form'), '{$_GET["redir_url"]}' )\"><i class=\"fa fa-facebook-square\"></i>
                 {$this_module->language->login_with_facebook}</div>
         </div>
     
@@ -75,6 +75,25 @@ if( ! empty($telegram_bot) && ! empty($telegram_token) )
         </div>
     ";
 }
+
+$client_id     = $settings->get("modules:single_signon.google_client_id");
+$client_secret = $settings->get("modules:single_signon.google_client_secret");
+if( ! empty($client_id) && ! empty($client_secret) )
+{
+    $redir_url = $_REQUEST["goto"];
+    if( empty($redir_url) ) $redir_url = $_SERVER["REQUEST_URI"];
+    $redir_url = urlencode($redir_url);
+    $go_url    = "{$this_module->get_url()}/scripts/google.php?mode=login&redir_url=$redir_url";
+    $output[] = "
+        <div class=\"aligncenter sso_google\" style=\"margin: 10px 0\">
+            <a class=\"framed_content pseudo_link\" style=\"display: block; color: black; background: white; border-color: #E64035;\"
+               href=\"{$go_url}\"><img src='{$this_module->get_url()}/media/google-icon.png'
+                style='position: relative; top: 0.1em; height: 1.2em;'>
+                {$this_module->language->login_with_google}</a>
+        </div>
+    ";
+}
+
 
 if( ! empty($output) )
 {

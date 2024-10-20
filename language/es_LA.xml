@@ -6,11 +6,11 @@
     <description>
         Solución de inicio único con grandes redes sociales.
         Extiende el módulo de usuarios para permitir el atado de redes sociales con cuentas existentes.
-        Nota: Sólo Facebook es soportado por el momento.
     </description>
     
     <login_with_facebook>Abrir sesión con Facebook</login_with_facebook>
     <login_with_twitch>Abrir sesión con Twitch</login_with_twitch>
+    <login_with_google>Abrir sesión con Google</login_with_google>
     <or>o</or>
     
     <facebook>
@@ -73,6 +73,16 @@
         <disconnect>Desconectar Telegram</disconnect>
     </telegram>
     
+    <google>
+        <invitation>¿Tienes una cuenta en Google?</invitation>
+        <connect>Conectar con Google</connect>
+        <user_connected>Este usuario tiene una cuenta de Google conectada con una cuenta local.</user_connected>
+        <already_connected>Tienes una cuenta de Google conectada con tu cuenta local.</already_connected>
+        <disconnect>Desconectar de Google</disconnect>
+        <not_connected>¿Tienes una cuenta en Google? ¡Puedes conectarla con tu cuenta local!</not_connected>
+        <connect>Conectar con Google</connect>
+    </google>
+    
     <logged_in>
         <info><![CDATA[
             Tienes una sesión abierta.
@@ -121,6 +131,131 @@
             <account_mismatch>Disculpa, pero tu cuenta de Telegram no está vinculada a esta cuenta.</account_mismatch>
             <missing_account_email>Tu cuenta no tiene un correo electrónico definido. Por favor ingrésala o no podrás reiniciar la contraseña para abrir sesión.</missing_account_email>
         </telegram>
+        <google>
+            <unconfigured>Disculpa, pero la configuración de integración con Google es incompleta.</unconfigured>
+            <error_popup>
+                <title>Autenticación con Google fallida</title>
+                <missing_mode>
+                    <caption>Modo de operación no encontrado</caption>
+                    <content><![CDATA[
+                        El servidor no ha logrado detectar el modo de operación para esta solicitud.
+                        Por favor intenta de nuevo.
+                        <br><br>
+                        <a href="/">
+                            <i class="fa fa-home"></i>
+                            Ir al inicio
+                        </a>
+                    ]]></content>
+                </missing_mode>
+                <missing_code>
+                    <caption>No se ha recibido el código de autorización de Google</caption>
+                    <content><![CDATA[
+                        Por favor intenta de nuevo.
+                        <br><br>
+                        <a href="/">
+                            <i class="fa fa-home"></i>
+                            Ir al inicio
+                        </a>
+                    ]]></content>
+                </missing_code>
+                <api_call_failed>
+                    <content><![CDATA[
+                        Por favor intenta de nuevo.
+                        <br><br>
+                        <a href="/">
+                            <i class="fa fa-home"></i>
+                            Ir al inicio
+                        </a>
+                    ]]></content>
+                </api_call_failed>
+                <account_exists>
+                    <title>Cuenta existente</title>
+                    <caption>Hay otra cuenta con el mismo correo puesto en tu cuenta de Google.</caption>
+                    <content><![CDATA[
+                        Por favor abre sesión con Google para accesar a la cuenta conectada con el correo de tu cuenta de Google en nuestro sitio web.
+                        <br><br>
+                        <a href="/accounts/register.php">
+                            <i class="fa fa-sign-in"></i>
+                            Ir a la página de registro
+                        </a>
+                        •
+                        <a href="/">
+                            <i class="fa fa-home"></i>
+                            Ir al inicio
+                        </a>
+                    ]]></content>
+                </account_exists>
+                <account_not_exists>
+                    <title>Cuenta no encontrada</title>
+                    <caption>No hay ninguna cuenta en nuestra base de datos conectada a tu cuenta de Google.</caption>
+                    <content><![CDATA[
+                        Por favor registra una cuenta usando Google desde nuestra página de registro.
+                        <br><br>
+                        <a href="/accounts/register.php">
+                            <i class="fa fa-sign-in"></i>
+                            Ir a la página de registro
+                        </a>
+                        •
+                        <a href="/">
+                            <i class="fa fa-home"></i>
+                            Ir al inicio
+                        </a>
+                    ]]></content>
+                </account_not_exists>
+                <multiple_accounts_found>
+                    <title>Se han encontrado múltiples cuentas</title>
+                    <caption>Hay más de una cuenta en nuestra base de datos con el correo de tu cuenta de Google.</caption>
+                    <content><![CDATA[
+                        Por favor contáctanos y provee el correo de tu cuenta de Google para arreglar el problema.
+                        <br><br>
+                        <a href="/contact">
+                            <i class="fa fa-envelope-o"></i>
+                            Ir a la página de contacto
+                        </a>
+                        •
+                        <a href="/">
+                            <i class="fa fa-home"></i>
+                            Ir al inicio
+                        </a>
+                    ]]></content>
+                </multiple_accounts_found>
+                <linking_account_id_unset>
+                    <title>Error en el servidor</title>
+                    <caption>No se ha podido cargar tu cuenta</caption>
+                    <content><![CDATA[
+                        Por favor intenta de nuevo. Si el problema persiste, envíanos un mensaje.
+                        <br><br>
+                        <a href="/accounts/edit_account.php">
+                            <i class="fa fa-pencil"></i>
+                            Ir a tu cuenta
+                        </a>
+                        •
+                        <a href="/contact">
+                            <i class="fa fa-envelope-o"></i>
+                            Ir a la página de contacto
+                        </a>
+                    ]]></content>
+                </linking_account_id_unset>
+                <linking_account_not_found>
+                    <title>Cuenta no encontrada</title>
+                    <caption>Tu cuenta en nuestro sitio web no ha sido encontrada</caption>
+                    <content><![CDATA[
+                        Por favor intenta de nuevo. Si el problema persiste, envíanos un mensaje.
+                        <br><br>
+                        <a href="/accounts/edit_account.php">
+                            <i class="fa fa-pencil"></i>
+                            Ir a tu cuenta
+                        </a>
+                        •
+                        <a href="/contact">
+                            <i class="fa fa-envelope-o"></i>
+                            Ir a la página de contacto
+                        </a>
+                    ]]></content>
+                </linking_account_not_found>
+            </error_popup>
+            <mails_updated>La información de correo en tu cuenta se ha actualizado para reflejarse con el correo de tu cuenta de Google. Por favor recheca tu correo principal/alternativo y asegúrate de que son correctos.</mails_updated>
+        </google>
     </messages>
     
     <settings_data>
@@ -208,6 +343,28 @@
             ]]></title>
             <description><![CDATA[
                 Especifica el token usado para autenticarse con el bot.
+            ]]></description>
+            <type>text</type>
+        </specs>
+        
+        <specs is_separator="true">Google</specs>
+        
+        <specs key="google_client_id">
+            <title><![CDATA[
+                ID de cliente
+            ]]></title>
+            <description><![CDATA[
+                Especifica el ID de cliente de tu app en la consola de Google.
+            ]]></description>
+            <type>text</type>
+        </specs>
+        
+        <specs key="google_client_secret">
+            <title><![CDATA[
+                Secreto de cliente
+            ]]></title>
+            <description><![CDATA[
+                Especifica el secreto de cliente de tu app en la consola de Google.
             ]]></description>
             <type>text</type>
         </specs>

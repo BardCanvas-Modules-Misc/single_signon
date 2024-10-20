@@ -83,3 +83,16 @@ if( ! empty($telegram_bot) && ! empty($telegram_token) )
     
     <?
 }
+
+$client_id     = $settings->get("modules:single_signon.google_client_id");
+$client_secret = $settings->get("modules:single_signon.google_client_secret");
+if( ! empty($client_id) && ! empty($client_secret) )
+{
+    ?>
+    
+    <!-- Google Single Sign on functions -->
+
+    <script type="text/javascript" src="<?= $config->full_root_path ?>/single_signon/media/google_functions~v1.0.0.js"></script>
+    
+    <?
+}

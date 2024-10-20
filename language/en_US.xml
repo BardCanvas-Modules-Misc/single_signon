@@ -6,11 +6,11 @@
     <description>
         Integrated Single Sign On with major Social Networks.
         Extends the Accounts module to allow the connection of existing accounts with Social Networks.
-        Note: Facebook is the only one supported at the moment.
     </description>
     
     <login_with_facebook>Login with Facebook</login_with_facebook>
     <login_with_twitch>Login with Twitch</login_with_twitch>
+    <login_with_google>Login with Google</login_with_google>
     <or>or</or>
     
     <facebook>
@@ -73,6 +73,16 @@
         <disconnect>Disconnect from Telegram</disconnect>
     </telegram>
     
+    <google>
+        <invitation>Do you have a Google account?</invitation>
+        <connect>Connect with Google</connect>
+        <user_connected>This user has a Google account conected with a local account.</user_connected>
+        <already_connected>You have your Google account conected with your local account.</already_connected>
+        <disconnect>Disconnect from Google</disconnect>
+        <not_connected>Do you have a Google account? You can connect it with your local account!</not_connected>
+        <connect>Connect with Google</connect>
+    </google>
+    
     <logged_in>
         <info><![CDATA[
             You have an open session.
@@ -121,6 +131,131 @@
             <account_mismatch>Sorry, but your Telegram account is not linked to this local account.</account_mismatch>
             <missing_account_email>Your account doesn't have an email set. Please set an email, or you won't be able to reset your password.</missing_account_email>
         </telegram>
+        <google>
+            <unconfigured>Sorry, but Google integration settings are incomplete.</unconfigured>
+            <error_popup>
+                <title>Google authentication failed</title>
+                <missing_mode>
+                    <caption>Missing operation mode</caption>
+                    <content><![CDATA[
+                        The server was unable to detect the operation mode of this request.
+                        Please go back try again.
+                        <br><br>
+                        <a href="/">
+                            <i class="fa fa-home"></i>
+                            Back to home
+                        </a>
+                    ]]></content>
+                </missing_mode>
+                <missing_code>
+                    <caption>No authorization code received by Google</caption>
+                    <content><![CDATA[
+                        Please go back and try again.
+                        <br><br>
+                        <a href="/">
+                            <i class="fa fa-home"></i>
+                            Back to home
+                        </a>
+                    ]]></content>
+                </missing_code>
+                <api_call_failed>
+                    <content><![CDATA[
+                        Please go back and try again.
+                        <br><br>
+                        <a href="/">
+                            <i class="fa fa-home"></i>
+                            Back to home
+                        </a>
+                    ]]></content>
+                </api_call_failed>
+                <account_exists>
+                    <title>Account already registered</title>
+                    <caption>There is another account with the same email set on your Google account.</caption>
+                    <content><![CDATA[
+                        Please login using Google to access the account connected to your Google account email in our website.
+                        <br><br>
+                        <a href="/accounts/register.php">
+                            <i class="fa fa-sign-in"></i>
+                            Go to the registration page
+                        </a>
+                        •
+                        <a href="/">
+                            <i class="fa fa-home"></i>
+                            Back to home
+                        </a>
+                    ]]></content>
+                </account_exists>
+                <account_not_exists>
+                    <title>Account not found</title>
+                    <caption>There is no account in our database matching your Google account.</caption>
+                    <content><![CDATA[
+                        Please register an account using Google from our Registration page.
+                        <br><br>
+                        <a href="/accounts/register.php">
+                            <i class="fa fa-sign-in"></i>
+                            Go to the registration page
+                        </a>
+                        •
+                        <a href="/">
+                            <i class="fa fa-home"></i>
+                            Back to home
+                        </a>
+                    ]]></content>
+                </account_not_exists>
+                <multiple_accounts_found>
+                    <title>Multiple accounts found</title>
+                    <caption>There is more than one account in our database matching your Google account email.</caption>
+                    <content><![CDATA[
+                        Please contact us and provide the email address you've set on your Google account to fix the issue.
+                        <br><br>
+                        <a href="/contact">
+                            <i class="fa fa-envelope-o"></i>
+                            Go to the contact page
+                        </a>
+                        •
+                        <a href="/">
+                            <i class="fa fa-home"></i>
+                            Back to home
+                        </a>
+                    ]]></content>
+                </multiple_accounts_found>
+                <linking_account_id_unset>
+                    <title>Server error</title>
+                    <caption>Your account couldn't be loaded</caption>
+                    <content><![CDATA[
+                        Please try again. If the problem persists, send us a message from our contact form.
+                        <br><br>
+                        <a href="/accounts/edit_account.php">
+                            <i class="fa fa-pencil"></i>
+                            Back to your acount
+                        </a>
+                        •
+                        <a href="/contact">
+                            <i class="fa fa-envelope-o"></i>
+                            Go to the contact page
+                        </a>
+                    ]]></content>
+                </linking_account_id_unset>
+                <linking_account_not_found>
+                    <title>Account not found</title>
+                    <caption>Your account in our website wasn't found</caption>
+                    <content><![CDATA[
+                        Please try again. If the problem persists, send us a message from our contact form.
+                        <br><br>
+                        <a href="/accounts/edit_account.php">
+                            <i class="fa fa-pencil"></i>
+                            Back to your acount
+                        </a>
+                        •
+                        <a href="/contact">
+                            <i class="fa fa-envelope-o"></i>
+                            Go to the contact page
+                        </a>
+                    ]]></content>
+                </linking_account_not_found>
+            </error_popup>
+            <mails_updated>Your account email settings have been updated to reflect your Google account email. Please recheck your main/alt emails and make sure they're OK.</mails_updated>
+        </google>
     </messages>
     
     <settings_data>
@@ -208,6 +343,28 @@
             ]]></title>
             <description><![CDATA[
                 Specify the token used to authenticate the bot.
+            ]]></description>
+            <type>text</type>
+        </specs>
+        
+        <specs is_separator="true">Google</specs>
+        
+        <specs key="google_client_id">
+            <title><![CDATA[
+                Client ID
+            ]]></title>
+            <description><![CDATA[
+                Specify the Google API client ID.
+            ]]></description>
+            <type>text</type>
+        </specs>
+        
+        <specs key="google_client_secret">
+            <title><![CDATA[
+                Client secret
+            ]]></title>
+            <description><![CDATA[
+                Specify the Google API client secret.
             ]]></description>
             <type>text</type>
         </specs>
