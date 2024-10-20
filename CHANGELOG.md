@@ -1,6 +1,10 @@
 
 # Single Sign ON Module Change Log
 
+## [0.4.1] - 2024-10-20
+
+- Reordered widgets in all forms.
+
 ## [0.4.0] - 2024-10-19
 
 - Tuned Telegram support.
