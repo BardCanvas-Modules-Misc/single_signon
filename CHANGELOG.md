@@ -1,6 +1,11 @@
 
 # Single Sign ON Module Change Log
 
+## [0.4.0] - 2024-10-19
+
+- Tuned Telegram support.
+- Added Google support.
+
 ## [0.3.0] - 2024-10-18
 
 - Added support for Telegram.
