@@ -51,6 +51,7 @@
 
     <extension_areas_info><![CDATA[
         Google toolbox: after linking account, after creating account.
+        Telegram toolbox: after linking account, after creating account.
     ]]></extension_areas_info>
     
 </module>

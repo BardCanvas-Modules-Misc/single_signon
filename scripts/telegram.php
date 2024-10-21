@@ -115,6 +115,10 @@ if( $mode == "login" )
     {
         cli_colortags::write("<red>[$logtime] $ip - $host - $loc</red>\n");
         cli_colortags::write("<green>@{$data["username"]} logged in.</green>\n");
+        
+        $config->globals["@single_signon:working_account"] = $xaccount;
+        $current_module->load_extensions("telegram_toolbox", "after_linking_account");
+        
         die("OK");
     }
     
@@ -141,10 +145,19 @@ if( $mode == "register" )
     }
     
     $xaccount = $toolbox->find_local_account($data["id"], $data["username"]);
-    if( ! is_null($xaccount) ) die("OK");
+    if( ! is_null($xaccount) )
+    {
+        $config->globals["@single_signon:working_account"] = $xaccount;
+        $current_module->load_extensions("telegram_toolbox", "after_creating_account");
+        die("OK");
+    }
     
     $xaccount = $toolbox->create_local_account($data["id"], $data["first_name"], $data["last_name"], $data["username"], $data["photo_url"]);
     $xaccount = $toolbox->find_local_account($data["id"], $data["username"]);
+    
+    $config->globals["@single_signon:working_account"] = $xaccount;
+    $current_module->load_extensions("telegram_toolbox", "after_creating_account");
+    
     die("OK");
 }
 
