@@ -1,6 +1,11 @@
 
 # Single Sign ON Module Change Log
 
+## [0.4.2] - 2024-10-21
+
+- Added extension points for Google login/registration.
+- Added extension points for Telegram login/registration.
+
 ## [0.4.1] - 2024-10-20
 
 - Reordered widgets in all forms.
