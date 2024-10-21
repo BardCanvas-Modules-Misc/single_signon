@@ -247,6 +247,9 @@ if( empty($mode) )
             exit;
         }
         
+        $config->globals["@single_signon:working_account"] = $account;
+        $current_module->load_extensions("google_toolbox", "after_linking_account");
+        
         $toolbox->open_session($account);
         $url = $_SESSION["single_signon_redir_url"];
         if( empty($url) ) $url = "/";

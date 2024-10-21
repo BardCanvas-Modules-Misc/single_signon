@@ -187,7 +187,8 @@ class google_toolbox
      */
     public function create_account($profile)
     {
-        global $config, $settings;
+        global $config, $settings, $modules;
+        $current_module = $modules["single_signon"];
         
         $country = $profile["country_code"];
         if( empty($country) ) $country = $settings->get("modules:accounts.default_country");
@@ -227,6 +228,9 @@ class google_toolbox
         $account->activate($config::NEWCOMER_USER_LEVEL);
         $account->level = $config::NEWCOMER_USER_LEVEL;
         $account->set_engine_pref("google:token",  $profile["token"]);
+        
+        $config->globals["@single_signon:working_account"] = $account;
+        $current_module->load_extensions("google_toolbox", "after_creating_account");
     }
     
     public function open_session($account)

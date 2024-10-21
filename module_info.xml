@@ -48,4 +48,9 @@
             </edit_account_form>
         </accounts>
     </extends_to>
+
+    <extension_areas_info><![CDATA[
+        Google toolbox: after linking account, after creating account.
+    ]]></extension_areas_info>
+    
 </module>
