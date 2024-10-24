@@ -242,6 +242,9 @@ $telegram_bot   = str_replace("@", "", $settings->get("modules:single_signon.tel
 $telegram_token = $settings->get("modules:single_signon.telegram_bot_token");
 if( ! empty($telegram_bot) && ! empty($telegram_token) )
 {
+    $radius = (int) $settings->get("modules:single_signon.telegram_button_border_radius");
+    if( ! empty($radius) ) $radius = "data-radius='$radius'";
+    
     if( empty($account->engine_prefs["telegram:username"]) )
     {
         $segments["telegram"] = "
@@ -251,7 +254,7 @@ if( ! empty($telegram_bot) && ! empty($telegram_token) )
             <p>
                 <script async src='https://telegram.org/js/telegram-widget.js?22'
                         data-telegram-login='{$telegram_bot}'
-                        data-size='large'
+                        data-size='large' $radius
                         data-onauth='SSO_telegram_link(user)'
                         data-request-access='write'></script>
             </p>

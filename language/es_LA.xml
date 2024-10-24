@@ -347,6 +347,21 @@
             <type>text</type>
         </specs>
         
+        <specs key="telegram_button_border_radius">
+            <title><![CDATA[
+                Radio del borde del botón en el diálogo de apertura de sesión
+            ]]></title>
+            <description><![CDATA[
+                Especifica el valor de pixeles.
+            ]]></description>
+            <type>number</type>
+            <options>
+                <step>1</step>
+                <min>0</min>
+                <max>100</max>
+            </options>
+        </specs>
+        
         <specs is_separator="true">Google</specs>
         
         <specs key="google_client_id">

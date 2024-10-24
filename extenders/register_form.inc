@@ -82,6 +82,9 @@ $telegram_bot   = str_replace("@", "", $settings->get("modules:single_signon.tel
 $telegram_token = $settings->get("modules:single_signon.telegram_bot_token");
 if( ! empty($telegram_bot) && ! empty($telegram_token) )
 {
+    $radius = (int) $settings->get("modules:single_signon.telegram_button_border_radius");
+    if( ! empty($radius) ) $radius = "data-radius='$radius'";
+    
     $segments["telegram"] = "
         <p>
             {$this_module->language->telegram->invitation}
@@ -89,7 +92,7 @@ if( ! empty($telegram_bot) && ! empty($telegram_token) )
         <p>
             <script async src='https://telegram.org/js/telegram-widget.js?22'
                     data-telegram-login='{$telegram_bot}'
-                    data-size='medium'
+                    data-size='medium' $radius
                     data-onauth='SSO_telegram_register(user)'
                     data-request-access='write'></script>
         </p>
