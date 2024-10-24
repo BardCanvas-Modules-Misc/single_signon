@@ -1,6 +1,11 @@
 
 # Single Sign ON Module Change Log
 
+## [1.0.0] - 2024-10-24
+
+- Tuned Telegram button appearance.
+- Switched version to full production.
+
 ## [0.4.2] - 2024-10-21
 
 - Added extension points for Google login/registration.
