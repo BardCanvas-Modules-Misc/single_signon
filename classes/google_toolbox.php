@@ -229,7 +229,9 @@ class google_toolbox
         $account->level = $config::NEWCOMER_USER_LEVEL;
         $account->set_engine_pref("google:token",  $profile["token"]);
         
-        $config->globals["@single_signon:working_account"] = $account;
+        $config->globals["@single_signon:working_account"]  = $account;
+        $config->globals["@single_signon:working_provider"] = "Google";
+        $config->globals["@single_signon:provider_icon"]    = "🟡";
         $current_module->load_extensions("google_toolbox", "after_creating_account");
     }
     

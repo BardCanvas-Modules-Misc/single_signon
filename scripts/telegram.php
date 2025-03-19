@@ -155,7 +155,9 @@ if( $mode == "register" )
     $xaccount = $toolbox->create_local_account($data["id"], $data["first_name"], $data["last_name"], $data["username"], $data["photo_url"]);
     $xaccount = $toolbox->find_local_account($data["id"], $data["username"]);
     
-    $config->globals["@single_signon:working_account"] = $xaccount;
+    $config->globals["@single_signon:working_account"]  = $xaccount;
+    $config->globals["@single_signon:working_provider"] = "Telegram";
+    $config->globals["@single_signon:provider_icon"]    = "🔵";
     $current_module->load_extensions("telegram_toolbox", "after_creating_account");
     
     die("OK");

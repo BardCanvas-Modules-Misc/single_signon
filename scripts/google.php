@@ -26,7 +26,7 @@ use hng2_tools\cli_colortags;
 include "../../config.php";
 include "../../includes/bootstrap.inc";
 
-session_start();
+if(session_status() === PHP_SESSION_NONE) session_start();
 header("Content-Type: text/html; chrset=utf-8");
 
 #
@@ -94,7 +94,7 @@ if( $mode == "login" )
 if( $mode == "register" )
 {
     $_SESSION["single_signon_session_mode"]  = "register";
-    $_SESSION["single_signon_redir_url"]     = $_REQUEST["redir_url"] != "" ? $_REQUEST["redir_url"] : "/";
+    $_SESSION["single_signon_redir_url"]     = $_REQUEST["redir_url"] != "" ? $_REQUEST["redir_url"] : "/?show_login_form=true";
     $_SESSION["single_signon_country_code"]  = get_geoip_country_code($ip);
     
     $url = $toolbox->get_google_redirect_url();
@@ -186,7 +186,7 @@ if( empty($mode) )
         $profile["country_code"] = strtolower($_SESSION["single_signon_country_code"]);
         $toolbox->create_account($profile);
         $url = $_SESSION["single_signon_redir_url"];
-        if( empty($url) ) $url = "/";
+        if( empty($url) ) $url = "/?show_login_form=true";
         unset($_SESSION["single_signon_session_mode"], $_SESSION["single_signon_redir_url"], $_SESSION["single_signon_country_code"]);
         header("Location: $url");
         die("<html><body><a href='$url'>{$language->click_here_to_continue}</a></html>");

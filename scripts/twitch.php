@@ -304,6 +304,11 @@ if( substr($state, 0, 1) == "R" )
     }
     $account->open_session($device);
     
+    $config->globals["@single_signon:working_account"]  = $account;
+    $config->globals["@single_signon:working_provider"] = "Twitch";
+    $config->globals["@single_signon:provider_icon"]    = "🟣";
+    $current_module->load_extensions("twitch_toolbox", "after_creating_account");
+    
     cli_colortags::write("<light_green>Session opened. Redirecting the user to $redir_url.</light_green>\n\n");
     
     header("Content-Type: text/html; chrset=utf-8");
