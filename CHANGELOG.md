@@ -1,5 +1,9 @@
 
-# Single Sign ON Module Change Log
+# Single Sign On Module Change Log
+
+## [1.0.1] - 2025-03-19
+
+- Tuned extension points after account creation.
 
 ## [1.0.0] - 2024-10-24
 
