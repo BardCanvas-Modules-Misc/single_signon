@@ -83,6 +83,13 @@
         <connect>Connect with Google</connect>
     </google>
     
+    <accounts_browser_filters>
+        <caption>Telegram:</caption>
+        <ignore>Ignored</ignore>
+        <any>With</any>
+        <none>Without</none>
+    </accounts_browser_filters>
+    
     <logged_in>
         <info><![CDATA[
             You have an open session.

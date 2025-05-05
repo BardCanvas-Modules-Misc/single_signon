@@ -46,6 +46,11 @@
             <edit_account_form>
                 <top>extenders/edit_account_form.inc</top>
             </edit_account_form>
+            <records_browser>
+                <principal_data_addons>extenders/accounts_nav_addons.inc</principal_data_addons>
+                <custom_filter_defs>extenders/accounts_nav_filter_defs.inc</custom_filter_defs>
+                <before_query_filters_integration>extenders/accounts_nav_filter_ins.inc</before_query_filters_integration>
+            </records_browser>
         </accounts>
     </extends_to>
 
