@@ -50,6 +50,7 @@
                 <principal_data_addons>extenders/accounts_nav_addons.inc</principal_data_addons>
                 <custom_filter_defs>extenders/accounts_nav_filter_defs.inc</custom_filter_defs>
                 <before_query_filters_integration>extenders/accounts_nav_filter_ins.inc</before_query_filters_integration>
+                <search_additions>extenders/accounts_nav_filter_adds.inc</search_additions>
             </records_browser>
         </accounts>
     </extends_to>
