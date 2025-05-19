@@ -1,6 +1,10 @@
 
 # Single Sign On Module Change Log
 
+## [1.0.2] - 2025-05-19
+
+- Added account browser filter extensions.
+
 ## [1.0.1] - 2025-03-19
 
 - Tuned extension points after account creation.
