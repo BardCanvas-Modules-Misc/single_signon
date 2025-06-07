@@ -264,6 +264,13 @@
             <mails_updated>La información de correo en tu cuenta se ha actualizado para reflejarse con el correo de tu cuenta de Google. Por favor recheca tu correo principal/alternativo y asegúrate de que son correctos.</mails_updated>
         </google>
     </messages>
+
+    <user_summary>
+        <title>Vínculos de sesión externa</title>
+        <telegram>Telegram</telegram>
+        <twitch>Twitch</twitch>
+        <google>Google</google>
+    </user_summary>
     
     <settings_data>
         <title>Inicio de sesión único</title>

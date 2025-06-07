@@ -265,6 +265,13 @@
         </google>
     </messages>
     
+    <user_summary>
+        <title>SSO bindings</title>
+        <telegram>Telegram</telegram>
+        <twitch>Twitch</twitch>
+        <google>Google</google>
+    </user_summary>
+    
     <settings_data>
         <title>Single Sign On</title>
         

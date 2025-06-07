@@ -52,6 +52,9 @@
                 <before_query_filters_integration>extenders/accounts_nav_filter_ins.inc</before_query_filters_integration>
                 <search_additions>extenders/accounts_nav_filter_adds.inc</search_additions>
             </records_browser>
+            <user_profile_home>
+                <additional_sections>contents/profile_home_section.inc</additional_sections>
+            </user_profile_home>
         </accounts>
     </extends_to>
 
