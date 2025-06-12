@@ -1,6 +1,11 @@
 
 # Single Sign On Module Change Log
 
+## [1.0.3] - 2025-06-10
+
+- Tweaked telegram info on the accounts browser extender.
+- Added bindings section to the user profile.
+
 ## [1.0.2] - 2025-05-19
 
 - Added account browser filter extensions.
